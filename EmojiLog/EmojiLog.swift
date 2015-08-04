@@ -10,8 +10,7 @@ import Foundation
 
 struct Log {
    
-    #if DEBUG
-    private static func log(emoji: String, content: String, file: AnyObject, line : AnyObject) {
+    private static func log(emoji: String, content: String, file: AnyObject, line : AnyObject){
         let fileName = "\(file)".lastPathComponent
         let lineNumber = "\(line)"
         let printContent =  emoji + "\t" + fileName + " " + lineNumber + " " + content
@@ -40,14 +39,5 @@ struct Log {
     static func e(format: String, args: [CVarArgType], file: AnyObject = __FILE__, line: AnyObject = __LINE__) {
         log("💔", content: String(format: format, arguments: args), file: file, line:line)
     }
-    #else
-    private static func log(emoji: String, content: String, file: AnyObject, line : AnyObject) {}
-    static func v(format: String, args: [CVarArgType], file: AnyObject = __FILE__, line: AnyObject = __LINE__) {}
-    static func d(format: String, args: [CVarArgType], file: AnyObject = __FILE__, line: AnyObject = __LINE__) {}
-    static func i(format: String, args: [CVarArgType], file: AnyObject = __FILE__, line: AnyObject = __LINE__) {}
-    static func w(format: String, args: [CVarArgType], file: AnyObject = __FILE__, line: AnyObject = __LINE__) {}
-    static func e(format: String, args: [CVarArgType], file: AnyObject = __FILE__, line: AnyObject = __LINE__) {}
-    #endif
-    
     
 }
